@@ -27,12 +27,19 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #8B4513;
+  background: #a54d27;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #654321;
+  background: #c97338;
+}
+
+/* Remove menu item border */
+.ant-menu-horizontal > .ant-menu-item::after,
+.ant-menu-horizontal > .ant-menu-item-selected::after,
+.ant-menu-horizontal > .ant-menu-item:hover::after {
+  border-bottom: none !important;
 }
 
 /* Animations */
