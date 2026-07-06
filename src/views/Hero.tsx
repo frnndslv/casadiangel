@@ -51,7 +51,7 @@ export default function Hero({ onReserveClick, onServicesClick }: HeroProps) {
           Bem-vindo à Casa di Angel
         </Title>
         <Paragraph style={{ color: '#f9eac9', fontSize: 'clamp(1rem, 4vw, 1.5rem)', marginBottom: 40, maxWidth: 800, margin: '0 auto 40px', padding: '0 10px' }}>
-          Um espaço acolhedor para todas as ocasiões - do café da manhã ao jantar especial
+          Seu destino para o café da manhã, almoço, brunch e eventos inesquecíveis, tudo em um só lugar!
         </Paragraph>
         <Space size="large" wrap style={{ justifyContent: 'center' }}>
           <Button 

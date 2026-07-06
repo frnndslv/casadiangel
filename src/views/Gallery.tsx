@@ -186,7 +186,7 @@ export default function Gallery({ onReserveClick }: GalleryProps) {
         <Image.PreviewGroup>
           <Row gutter={[16, 16]}>
             {visibleImages.map((image, index) => (
-              <Col span={6} key={index}>
+              <Col xs={12} sm={6} key={index}>
                 <RevealTile>
                   <Image
                     src={image.src}
