@@ -1,4 +1,4 @@
-import { Row, Col, Card, Typography, Button, Carousel } from 'antd'
+import { Row, Col, Card, Typography, Button, Carousel, Image } from 'antd'
 import { LinkOutlined } from '@ant-design/icons'
 
 import caipirinha1 from '../assets/img/novas-fotos/Casa Di Angels-1º Picole de Limão com gingibre-8077.jpg'
@@ -58,19 +58,24 @@ export default function Menu() {
               <Card
                 style={{ textAlign: 'center', height: '100%', borderRadius: 12, background: '#fff', overflow: 'hidden' }}
                 cover={
-                  <Carousel autoplay effect="fade" style={{ height: 300 }}>
-                    {item.images.map((img, imgIndex) => (
-                      <div key={imgIndex}>
-                        <div style={{ height: 300, overflow: 'hidden' }}>
-                          <img
-                            src={img}
-                            alt={item.title}
-                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                          />
+                  <Image.PreviewGroup items={item.images}>
+                    <Carousel autoplay effect="fade" style={{ height: 300 }}>
+                      {item.images.map((img, imgIndex) => (
+                        <div key={imgIndex}>
+                          <div style={{ height: 300, overflow: 'hidden' }}>
+                            <Image
+                              src={img}
+                              alt={item.title}
+                              width="100%"
+                              height="100%"
+                              style={{ objectFit: 'cover' }}
+                              wrapperStyle={{ width: '100%', height: '100%' }}
+                            />
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </Carousel>
+                      ))}
+                    </Carousel>
+                  </Image.PreviewGroup>
                 }
               >
                 <Title level={4} style={{ color: '#213a36' }}>{item.title}</Title>

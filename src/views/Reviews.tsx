@@ -126,7 +126,7 @@ export default function Reviews() {
             flexWrap: 'wrap'
           }}
         >
-          <span style={{ fontSize: 22, fontWeight: 700, color: '#213a36' }}>4,6</span>
+          <span style={{ fontSize: 22, fontWeight: 700, color: '#213a36' }}>5,0</span>
           <Stars />
           <span style={{ fontSize: 14, color: '#5a5348' }}>· 660 avaliações no Google</span>
         </div>
