@@ -3,10 +3,12 @@ import './App.css'
 import logo from './assets/logo/logo-verde.svg'
 import Hero from './views/Hero'
 import Services from './views/Services'
+import MenuSection from './views/Menu'
 import Events from './views/Events'
 import About from './views/About'
 import Gallery from './views/Gallery'
 import Contact from './views/Contact'
+import Reviews from './views/Reviews'
 
 const { Header, Content, Footer } = Layout
 const { Text } = Typography
@@ -47,6 +49,7 @@ function App() {
           >
             <Menu.Item key="home" onClick={() => scrollToSection('home')} style={{ padding: '0 8px', fontSize:"20px" }}>Início</Menu.Item>
             <Menu.Item key="services" onClick={() => scrollToSection('services')} style={{ padding: '0 8px', fontSize:"20px"  }}>Serviços</Menu.Item>
+            <Menu.Item key="menu" onClick={() => scrollToSection('menu')} style={{ padding: '0 8px', fontSize:"20px" }}>Cardápio</Menu.Item>
             <Menu.Item key="about" onClick={() => scrollToSection('about')} style={{ padding: '0 8px', display: window.innerWidth < 576 ? 'none' : 'inline-block', fontSize:"20px" }}>Sobre</Menu.Item>
           </Menu>
         </div>
@@ -58,10 +61,12 @@ function App() {
           onServicesClick={() => scrollToSection('services')}
         />
         <Services />
+        <MenuSection />
         <Events onWhatsAppClick={openWhatsApp} />
         <About />
         <Gallery />
         <Contact />
+        <Reviews />
       </Content>
 
       <Footer style={{ textAlign: 'center', background: '#f9eac9', color: '#213a36', padding: '20px' }}>

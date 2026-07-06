@@ -3,6 +3,11 @@ import { ClockCircleOutlined, PhoneOutlined, EnvironmentOutlined } from '@ant-de
 
 const { Title, Text } = Typography
 
+const ADDRESS = 'Rua Gonçalves Dias, 308, Curitiba - PR, 80240-340'
+const MAPS_QUERY = encodeURIComponent(ADDRESS)
+const MAPS_EMBED_URL = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`
+const MAPS_LINK_URL = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`
+
 export default function Contact() {
   return (
     <section id="contact" style={{ padding: 'clamp(40px, 10vw, 80px) 20px', background: '#c97338', color: '#fff' }}>
@@ -12,11 +17,31 @@ export default function Contact() {
         </Title>
         <Row gutter={[24, 24]} justify="center">
           <Col xs={24} sm={12} md={8}>
-            <Card style={{ textAlign: 'center', borderRadius: 12, height: '100%', minHeight: 200, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <EnvironmentOutlined style={{ fontSize: 'clamp(36px, 8vw, 48px)', color: '#a54d27', marginBottom: 16 }} />
-              <Title level={4} style={{ fontSize: 'clamp(16px, 4vw, 20px)', marginBottom: 12 }}>Endereço</Title>
-              <Text style={{ fontSize: 'clamp(12px, 3vw, 14px)' }}>Rua Golçalves Dias, 308</Text><br />
-              <Text style={{ fontSize: 'clamp(12px, 3vw, 14px)' }}>Paraná, Curitiba, 80240-340</Text>
+            <Card
+              style={{ textAlign: 'center', borderRadius: 12, height: '100%', minHeight: 200, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+              styles={{ body: { padding: 0 } }}
+            >
+              <a
+                href={MAPS_LINK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'block', color: 'inherit' }}
+              >
+                <div style={{ position: 'relative', width: '100%', height: 140, borderRadius: '12px 12px 0 0', overflow: 'hidden' }}>
+                  <iframe
+                    src={MAPS_EMBED_URL}
+                    style={{ width: '100%', height: '100%', border: 0, pointerEvents: 'none' }}
+                    loading="lazy"
+                    title="Mapa de localização"
+                  />
+                </div>
+                <div style={{ padding: '16px 16px 20px' }}>
+                  <EnvironmentOutlined style={{ fontSize: 'clamp(28px, 6vw, 36px)', color: '#a54d27', marginBottom: 8 }} />
+                  <Title level={4} style={{ fontSize: 'clamp(16px, 4vw, 20px)', marginBottom: 12 }}>Endereço</Title>
+                  <Text style={{ fontSize: 'clamp(12px, 3vw, 14px)' }}>Rua Gonçalves Dias, 308</Text><br />
+                  <Text style={{ fontSize: 'clamp(12px, 3vw, 14px)' }}>Paraná, Curitiba, 80240-340</Text>
+                </div>
+              </a>
             </Card>
           </Col>
           <Col xs={24} sm={12} md={8}>

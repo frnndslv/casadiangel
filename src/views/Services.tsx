@@ -28,7 +28,7 @@ export default function Services() {
     },
     {
       video: videoHappyHour,
-      title: 'Happy Hour',
+      title: 'Comemorações',
       description: 'Drinks especiais e petiscos para relaxar com os amigos',
       images: []
     },

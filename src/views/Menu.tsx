@@ -1,0 +1,99 @@
+import { Row, Col, Card, Typography, Button, Carousel } from 'antd'
+import { LinkOutlined } from '@ant-design/icons'
+
+import caipirinha1 from '../assets/img/novas-fotos/Casa Di Angels-1º Picole de Limão com gingibre-8077.jpg'
+import caipirinha2 from '../assets/img/novas-fotos/Casa Di Angels-3º Framboesa, Maracujá-Concurso-8086.jpg'
+import vinho1 from '../assets/img/vinhos/vinho-bobbejaan-shiraz.png'
+import vinho2 from '../assets/img/vinhos/vinho-rose-thera.png'
+import vinho3 from '../assets/img/vinhos/vinho-branco-el-mendocino.png'
+import vinho4 from '../assets/img/vinhos/vinho-branco-las-perdices.png'
+import vinho5 from '../assets/img/vinhos/espumante-panizzon.png'
+import vinho6 from '../assets/img/vinhos/vinho-verde-minha-adega.png'
+import vinho7 from '../assets/img/vinhos/vinho-majolica-pecorino.png'
+import parmegiana1 from '../assets/img/novas-fotos/22-casa-di-angel-0043.jpg'
+import parmegiana2 from '../assets/img/novas-fotos/21-casa-di-angel-0042.jpg'
+
+const { Title, Paragraph } = Typography
+
+const CARDAPIO_URL = 'https://cardapioweb.dalcatech.com.br/?54136232000109--9--estatico'
+
+interface Highlight {
+  title: string
+  description: string
+  images: string[]
+}
+
+export default function Menu() {
+  const highlights: Highlight[] = [
+    {
+      title: 'Drinks Especiais',
+      description: 'Nossa campeã: eleita Melhor Caipirinha na 3ª edição do Circuito de Caipirinhas da Curitiba Honesta',
+      images: [caipirinha1, caipirinha2],
+    },
+    {
+      title: 'Vinhos',
+      description: 'Seleção especial de rótulos para harmonizar com cada momento',
+      images: [vinho1, vinho2, vinho3, vinho4, vinho5, vinho6, vinho7],
+    },
+    {
+      title: 'Parmegianas',
+      description: 'Parmegianas generosas, com muito queijo e molho caseiro',
+      images: [parmegiana1, parmegiana2],
+    },
+  ]
+
+  return (
+    <section id="menu" style={{ padding: 'clamp(40px, 10vw, 80px) 20px', background: '#f9eac9' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        <Title level={2} style={{ textAlign: 'center', marginBottom: 16, color: '#213a36', fontSize: 'clamp(1.5rem, 5vw, 2rem)' }}>
+          Cardápio
+        </Title>
+        <Paragraph style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto clamp(30px, 6vw, 50px)', fontSize: 'clamp(14px, 3vw, 18px)', color: '#213a36' }}>
+          Drinks especiais, vinhos selecionados e pratos que são a cara da Casa di Angel
+        </Paragraph>
+
+        <Row gutter={[24, 24]}>
+          {highlights.map((item, index) => (
+            <Col key={index} xs={24} sm={12} md={8}>
+              <Card
+                style={{ textAlign: 'center', height: '100%', borderRadius: 12, background: '#fff', overflow: 'hidden' }}
+                cover={
+                  <Carousel autoplay effect="fade" style={{ height: 300 }}>
+                    {item.images.map((img, imgIndex) => (
+                      <div key={imgIndex}>
+                        <div style={{ height: 300, overflow: 'hidden' }}>
+                          <img
+                            src={img}
+                            alt={item.title}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </Carousel>
+                }
+              >
+                <Title level={4} style={{ color: '#213a36' }}>{item.title}</Title>
+                <Paragraph style={{ color: '#213a36' }}>{item.description}</Paragraph>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+
+        <div style={{ textAlign: 'center', marginTop: 'clamp(30px, 6vw, 50px)' }}>
+          <Button
+            type="primary"
+            size="large"
+            icon={<LinkOutlined />}
+            href={CARDAPIO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ background: '#213a36', borderColor: '#213a36', height: 'auto', padding: '12px 24px', fontSize: 'clamp(14px, 3vw, 16px)', color: '#f9eac9' }}
+          >
+            Ver Cardápio Completo
+          </Button>
+        </div>
+      </div>
+    </section>
+  )
+}
