@@ -1,5 +1,5 @@
 import { Row, Col, Card, Typography } from 'antd'
-import { ClockCircleOutlined, PhoneOutlined, EnvironmentOutlined } from '@ant-design/icons'
+import { ClockCircleOutlined, WhatsAppOutlined, EnvironmentOutlined, PhoneFilled } from '@ant-design/icons'
 
 const { Title, Text } = Typography
 
@@ -7,6 +7,10 @@ const ADDRESS = 'Rua Gonçalves Dias, 308, Curitiba - PR, 80240-340'
 const MAPS_QUERY = encodeURIComponent(ADDRESS)
 const MAPS_EMBED_URL = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`
 const MAPS_LINK_URL = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`
+const WHATSAPP_NUMBER = '5541991520742'
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`
+const PHONE_DISPLAY = '(41) 99152-0742'
+const PHONE_CALL_URL = `tel:+${WHATSAPP_NUMBER}`
 
 export default function Contact() {
   return (
@@ -45,17 +49,88 @@ export default function Contact() {
             </Card>
           </Col>
           <Col xs={24} sm={12} md={8}>
-            <Card style={{ textAlign: 'center', borderRadius: 12, height: '100%', minHeight: 200, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <PhoneOutlined style={{ fontSize: 'clamp(36px, 8vw, 48px)', color: '#a54d27', marginBottom: 16 }} />
-              <Title level={4} style={{ fontSize: 'clamp(16px, 4vw, 20px)', marginBottom: 12 }}>Telefone</Title>
-              <Text style={{ fontSize: 'clamp(12px, 3vw, 14px)' }}>41 99152 0742</Text><br />
+            <Card
+              style={{ textAlign: 'center', borderRadius: 12, height: '100%', minHeight: 200, overflow: 'hidden' }}
+              styles={{ body: { padding: 0 } }}
+            >
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'block', color: 'inherit' }}
+              >
+                <div style={{ background: '#213a36', height: 140, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(249, 234, 201, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <WhatsAppOutlined style={{ fontSize: 32, color: '#f9eac9' }} />
+                  </div>
+                </div>
+                <div style={{ padding: '16px 16px 20px' }}>
+                  <Title level={4} style={{ fontSize: 'clamp(16px, 4vw, 20px)', marginBottom: 12, color: '#213a36' }}>Telefone</Title>
+                </div>
+              </a>
+              <div style={{ padding: '0 16px 20px' }}>
+                <a
+                  href={PHONE_CALL_URL}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    background: '#c97338',
+                    color: '#fff',
+                    fontWeight: 700,
+                    letterSpacing: 0.5,
+                    padding: '10px 24px',
+                    borderRadius: 999,
+                    marginBottom: 10,
+                  }}
+                >
+                  <PhoneFilled style={{ fontSize: 14 }} />
+                  LIGAR AGORA
+                </a>
+                <br />
+                <Text style={{ fontSize: 'clamp(14px, 3vw, 16px)', fontWeight: 600, color: '#a54d27' }}>{PHONE_DISPLAY}</Text>
+              </div>
             </Card>
           </Col>
           <Col xs={24} sm={12} md={8}>
-            <Card style={{ textAlign: 'center', borderRadius: 12, height: '100%', minHeight: 200, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <ClockCircleOutlined style={{ fontSize: 'clamp(36px, 8vw, 48px)', color: '#a54d27', marginBottom: 16 }} />
-              <Title level={4} style={{ fontSize: 'clamp(16px, 4vw, 20px)', marginBottom: 12 }}>Horário</Title>
-              <Text style={{ fontSize: 'clamp(12px, 3vw, 14px)' }}>Segunda a Sabado: 8h - 20h</Text><br />
+            <Card
+              style={{ textAlign: 'center', borderRadius: 12, height: '100%', minHeight: 340, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
+              styles={{ body: { padding: 0, height: '100%', display: 'flex', flexDirection: 'column' } }}
+            >
+              <div style={{ background: '#213a36', flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(249, 234, 201, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <ClockCircleOutlined style={{ fontSize: 32, color: '#f9eac9' }} />
+                </div>
+              </div>
+              <div style={{ padding: '16px 20px 20px', fontFamily: 'Georgia, serif', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <Title level={4} style={{ fontSize: 'clamp(18px, 4vw, 22px)', marginBottom: 16, color: '#213a36', fontFamily: 'Georgia, serif' }}>Horário</Title>
+                <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 8, borderBottom: '1px solid #eee' }}>
+                  <Text style={{ fontSize: 'clamp(13px, 3vw, 15px)', fontWeight: 700, color: '#a54d27' }}>Segunda – Sábado</Text>
+                  <Text style={{ fontSize: 'clamp(13px, 3vw, 15px)', fontWeight: 700, color: '#a54d27' }}>8h – 20h</Text>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #eee' }}>
+                  <Text style={{ fontSize: 'clamp(13px, 3vw, 15px)', color: '#999' }}>Domingo</Text>
+                  <Text style={{ fontSize: 'clamp(13px, 3vw, 15px)', color: '#999' }}>Fechado</Text>
+                </div>
+                <Text style={{ fontSize: 'clamp(11px, 2.5vw, 13px)', fontStyle: 'italic', color: '#213a36', display: 'block', marginTop: 12, marginBottom: 16 }}>
+                  Para eventos sofisticados, horários especiais podem ser combinados sob medida
+                </Text>
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    background: '#213a36',
+                    color: '#fff',
+                    fontWeight: 600,
+                    padding: '8px 20px',
+                    borderRadius: 999,
+                    fontSize: 'clamp(12px, 3vw, 14px)',
+                  }}
+                >
+                  ✓ Aberto agora
+                </div>
+              </div>
             </Card>
           </Col>
         </Row>

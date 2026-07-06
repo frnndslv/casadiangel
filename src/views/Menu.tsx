@@ -48,9 +48,23 @@ export default function Menu() {
         <Title level={2} style={{ textAlign: 'center', marginBottom: 16, color: '#213a36', fontSize: 'clamp(1.5rem, 5vw, 2rem)' }}>
           Cardápio
         </Title>
-        <Paragraph style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto clamp(30px, 6vw, 50px)', fontSize: 'clamp(14px, 3vw, 18px)', color: '#213a36' }}>
+        <Paragraph style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto', fontSize: 'clamp(14px, 3vw, 18px)', color: '#213a36' }}>
           Drinks especiais, vinhos selecionados e pratos que são a cara da Casa di Angel
         </Paragraph>
+
+        <div style={{ textAlign: 'center', margin: '20px 0 clamp(30px, 6vw, 50px)' }}>
+          <Button
+            type="primary"
+            size="large"
+            icon={<LinkOutlined />}
+            href={CARDAPIO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ background: '#213a36', borderColor: '#213a36', height: 'auto', padding: '12px 24px', fontSize: 'clamp(14px, 3vw, 16px)', color: '#f9eac9' }}
+          >
+            Ver Cardápio Completo
+          </Button>
+        </div>
 
         <Row gutter={[24, 24]}>
           {highlights.map((item, index) => (
@@ -80,24 +94,20 @@ export default function Menu() {
               >
                 <Title level={4} style={{ color: '#213a36' }}>{item.title}</Title>
                 <Paragraph style={{ color: '#213a36' }}>{item.description}</Paragraph>
+                <Button
+                  type="primary"
+                  icon={<LinkOutlined />}
+                  href={CARDAPIO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ background: '#213a36', borderColor: '#213a36', color: '#f9eac9' }}
+                >
+                  Ver Mais
+                </Button>
               </Card>
             </Col>
           ))}
         </Row>
-
-        <div style={{ textAlign: 'center', marginTop: 'clamp(30px, 6vw, 50px)' }}>
-          <Button
-            type="primary"
-            size="large"
-            icon={<LinkOutlined />}
-            href={CARDAPIO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ background: '#213a36', borderColor: '#213a36', height: 'auto', padding: '12px 24px', fontSize: 'clamp(14px, 3vw, 16px)', color: '#f9eac9' }}
-          >
-            Ver Cardápio Completo
-          </Button>
-        </div>
       </div>
     </section>
   )
