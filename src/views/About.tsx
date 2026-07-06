@@ -12,7 +12,7 @@ export default function About() {
         <Paragraph style={{ fontSize: 'clamp(14px, 3vw, 18px)', lineHeight: 1.8 }}>
           A Casa di Angel nasceu do sonho de criar um espaço onde as pessoas possam 
           se sentir em casa, independentemente do momento do dia. Oferecemos desde o 
-          café da manhã acolhedor até jantares sofisticados, sempre com o mesmo 
+          café da manhã acolhedor até eventos sofisticados, sempre com o mesmo
           carinho e atenção aos detalhes.
         </Paragraph>
         <Divider />
