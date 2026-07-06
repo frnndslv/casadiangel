@@ -87,7 +87,7 @@ export default function Gallery({ onReserveClick }: GalleryProps) {
           </Title>
         </div>
 
-        <Row gutter={[48, 32]} align="top" style={{ marginBottom: 48 }}>
+        <Row gutter={[48, 32]} align="middle" style={{ marginBottom: 48 }}>
           <Col xs={24} sm={12} md={10}>
             <div className="fade-in-up" style={{ maxWidth: 420, margin: '0 auto' }}>
               <video
@@ -108,9 +108,9 @@ export default function Gallery({ onReserveClick }: GalleryProps) {
             </div>
           </Col>
           <Col xs={24} sm={12} md={14} style={{ textAlign: 'left' }}>
-            <div className="fade-in-up" style={{ animationDelay: '0.15s' }}>
+            <div className="fade-in-up" style={{ maxWidth: 520, animationDelay: '0.15s' }}>
               <Paragraph
-                style={{ fontSize: 'clamp(16px, 3vw, 20px)', color: '#213a36', margin: '0 0 28px', lineHeight: 1.5 }}
+                style={{ fontSize: 'clamp(18px, 3.2vw, 24px)', color: '#213a36', margin: '0 0 36px', lineHeight: 1.6 }}
               >
                 Cada canto da Casa di Angel foi pensado para acolher.
                 <br />
@@ -119,33 +119,33 @@ export default function Gallery({ onReserveClick }: GalleryProps) {
                 e uma atmosfera que convida a ficar.
               </Paragraph>
 
-              <div style={{ marginBottom: 32 }}>
+              <div style={{ marginBottom: 40 }}>
                 {highlights.map((item, index) => (
                   <div
                     key={index}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      gap: 16,
-                      padding: '14px 0',
+                      gap: 20,
+                      padding: '18px 0',
                       borderBottom: index < highlights.length - 1 ? '1px solid rgba(33, 58, 54, 0.12)' : 'none',
                     }}
                   >
                     <div
                       style={{
-                        width: 42,
-                        height: 42,
-                        minWidth: 42,
-                        borderRadius: 10,
+                        width: 50,
+                        height: 50,
+                        minWidth: 50,
+                        borderRadius: 12,
                         background: 'rgba(201, 115, 56, 0.14)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                       }}
                     >
-                      <item.Icon size={22} color={item.color} stroke={1.75} />
+                      <item.Icon size={26} color={item.color} stroke={1.75} />
                     </div>
-                    <span style={{ fontSize: 'clamp(14px, 3vw, 16px)', color: '#213a36' }}>
+                    <span style={{ fontSize: 'clamp(16px, 3vw, 18px)', color: '#213a36' }}>
                       {item.text}
                     </span>
                   </div>
@@ -162,8 +162,8 @@ export default function Gallery({ onReserveClick }: GalleryProps) {
                   borderColor: '#c97338',
                   height: 'auto',
                   fontWeight: 600,
-                  fontSize: 'clamp(14px, 3vw, 16px)',
-                  padding: '12px 28px',
+                  fontSize: 'clamp(15px, 3vw, 17px)',
+                  padding: '14px 32px',
                   borderRadius: 30,
                 }}
                 onClick={onReserveClick}
@@ -179,7 +179,7 @@ export default function Gallery({ onReserveClick }: GalleryProps) {
             level={3}
             style={{ color: '#213a36', margin: 0, fontSize: 'clamp(1.4rem, 4vw, 2rem)' }}
           >
-            Conheça os espaços
+            Ambientes completos
           </Title>
         </div>
 
