@@ -40,8 +40,8 @@ function App() {
         padding: '0 16px',
         height: '120px'
       }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: 1200, margin: '0 auto', height: "120px" }}>
-          <img src={logo} alt="Casa di Angel" style={{ height: 'clamp(60px, 14vw, 90px)', margin: '8px 0' }} />
+        <div className="header-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: 1200, margin: '0 auto', height: "120px" }}>
+          <img src={logo} alt="Casa di Angel" className="header-logo" style={{ height: 'clamp(60px, 14vw, 90px)', margin: '8px 0' }} />
           <Menu 
             mode="horizontal" 
             style={{ border: 'none', background: 'transparent', minWidth: 'auto' }}
@@ -64,7 +64,7 @@ function App() {
         <MenuSection />
         <Events onWhatsAppClick={openWhatsApp} />
         <About />
-        <Gallery />
+        <Gallery onReserveClick={() => scrollToSection('events')} />
         <Contact />
         <Reviews />
       </Content>

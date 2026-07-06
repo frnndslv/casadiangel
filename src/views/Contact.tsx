@@ -12,7 +12,43 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`
 const PHONE_DISPLAY = '(41) 99152-0742'
 const PHONE_CALL_URL = `tel:+${WHATSAPP_NUMBER}`
 
+const CARD_HEIGHT = 320
+const GREEN = '#213a36'
+
+function isOpenNow() {
+  const now = new Date()
+  const day = now.getDay() // 0 = domingo
+  if (day === 0) return false
+  const minutes = now.getHours() * 60 + now.getMinutes()
+  return minutes >= 8 * 60 && minutes < 20 * 60
+}
+
+const cardStyle: React.CSSProperties = {
+  textAlign: 'center',
+  borderRadius: 12,
+  height: CARD_HEIGHT,
+  overflow: 'hidden',
+  display: 'flex',
+  flexDirection: 'column',
+}
+
+const bodyStyle: React.CSSProperties = { padding: 0, height: '100%', display: 'flex', flexDirection: 'column' }
+
+const titleStyle: React.CSSProperties = {
+  fontSize: 'clamp(16px, 3.5vw, 20px)',
+  fontWeight: 700,
+  color: GREEN,
+  marginBottom: 10,
+}
+
+const iconCircle = (
+  <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'rgba(249, 234, 201, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <ClockCircleOutlined style={{ fontSize: 28, color: '#f9eac9' }} />
+  </div>
+)
+
 export default function Contact() {
+  const open = isOpenNow()
   return (
     <section id="contact" style={{ padding: 'clamp(40px, 10vw, 80px) 20px', background: '#c97338', color: '#fff' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
@@ -20,18 +56,16 @@ export default function Contact() {
           Entre em Contato
         </Title>
         <Row gutter={[24, 24]} justify="center">
+          {/* Endereço */}
           <Col xs={24} sm={12} md={8}>
-            <Card
-              style={{ textAlign: 'center', borderRadius: 12, height: '100%', minHeight: 200, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
-              styles={{ body: { padding: 0 } }}
-            >
+            <Card style={cardStyle} styles={{ body: bodyStyle }}>
               <a
                 href={MAPS_LINK_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ display: 'block', color: 'inherit' }}
+                style={{ display: 'flex', flexDirection: 'column', height: '100%', color: 'inherit' }}
               >
-                <div style={{ position: 'relative', width: '100%', height: 140, borderRadius: '12px 12px 0 0', overflow: 'hidden' }}>
+                <div style={{ flex: '0 0 50%', position: 'relative', overflow: 'hidden' }}>
                   <iframe
                     src={MAPS_EMBED_URL}
                     style={{ width: '100%', height: '100%', border: 0, pointerEvents: 'none' }}
@@ -39,36 +73,32 @@ export default function Contact() {
                     title="Mapa de localização"
                   />
                 </div>
-                <div style={{ padding: '16px 16px 20px' }}>
-                  <EnvironmentOutlined style={{ fontSize: 'clamp(28px, 6vw, 36px)', color: '#a54d27', marginBottom: 8 }} />
-                  <Title level={4} style={{ fontSize: 'clamp(16px, 4vw, 20px)', marginBottom: 12 }}>Endereço</Title>
-                  <Text style={{ fontSize: 'clamp(12px, 3vw, 14px)' }}>Rua Gonçalves Dias, 308</Text><br />
-                  <Text style={{ fontSize: 'clamp(12px, 3vw, 14px)' }}>Paraná, Curitiba, 80240-340</Text>
+                <div style={{ flex: '1 1 50%', padding: '16px 16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                  <EnvironmentOutlined style={{ fontSize: 24, color: GREEN, marginBottom: 8 }} />
+                  <div style={titleStyle}>Endereço</div>
+                  <Text style={{ fontSize: 'clamp(12px, 3vw, 14px)', color: GREEN }}>Rua Gonçalves Dias, 308</Text>
+                  <Text style={{ fontSize: 'clamp(12px, 3vw, 14px)', color: GREEN }}>Paraná, Curitiba, 80240-340</Text>
                 </div>
               </a>
             </Card>
           </Col>
+
+          {/* Telefone */}
           <Col xs={24} sm={12} md={8}>
-            <Card
-              style={{ textAlign: 'center', borderRadius: 12, height: '100%', minHeight: 200, overflow: 'hidden' }}
-              styles={{ body: { padding: 0 } }}
-            >
+            <Card style={cardStyle} styles={{ body: bodyStyle }}>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ display: 'block', color: 'inherit' }}
+                style={{ flex: '0 0 50%', background: GREEN, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               >
-                <div style={{ background: '#213a36', height: 140, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(249, 234, 201, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <WhatsAppOutlined style={{ fontSize: 32, color: '#f9eac9' }} />
-                  </div>
-                </div>
-                <div style={{ padding: '16px 16px 20px' }}>
-                  <Title level={4} style={{ fontSize: 'clamp(16px, 4vw, 20px)', marginBottom: 12, color: '#213a36' }}>Telefone</Title>
+                <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'rgba(249, 234, 201, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <WhatsAppOutlined style={{ fontSize: 28, color: '#f9eac9' }} />
                 </div>
               </a>
-              <div style={{ padding: '0 16px 20px' }}>
+              <div style={{ flex: '1 1 50%', padding: '16px 16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={titleStyle}>Telefone</div>
+                <Text style={{ fontSize: 'clamp(13px, 3vw, 15px)', fontWeight: 600, color: '#a54d27', marginBottom: 12 }}>{PHONE_DISPLAY}</Text>
                 <a
                   href={PHONE_CALL_URL}
                   style={{
@@ -81,54 +111,51 @@ export default function Contact() {
                     letterSpacing: 0.5,
                     padding: '10px 24px',
                     borderRadius: 999,
-                    marginBottom: 10,
+                    marginTop: 'auto',
                   }}
                 >
                   <PhoneFilled style={{ fontSize: 14 }} />
                   LIGAR AGORA
                 </a>
-                <br />
-                <Text style={{ fontSize: 'clamp(14px, 3vw, 16px)', fontWeight: 600, color: '#a54d27' }}>{PHONE_DISPLAY}</Text>
               </div>
             </Card>
           </Col>
+
+          {/* Horário */}
           <Col xs={24} sm={12} md={8}>
-            <Card
-              style={{ textAlign: 'center', borderRadius: 12, height: '100%', minHeight: 340, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
-              styles={{ body: { padding: 0, height: '100%', display: 'flex', flexDirection: 'column' } }}
-            >
-              <div style={{ background: '#213a36', flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(249, 234, 201, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <ClockCircleOutlined style={{ fontSize: 32, color: '#f9eac9' }} />
-                </div>
+            <Card style={cardStyle} styles={{ body: bodyStyle }}>
+              <div style={{ flex: '0 0 50%', background: GREEN, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                {iconCircle}
               </div>
-              <div style={{ padding: '16px 20px 20px', fontFamily: 'Georgia, serif', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <Title level={4} style={{ fontSize: 'clamp(18px, 4vw, 22px)', marginBottom: 16, color: '#213a36', fontFamily: 'Georgia, serif' }}>Horário</Title>
-                <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 8, borderBottom: '1px solid #eee' }}>
-                  <Text style={{ fontSize: 'clamp(13px, 3vw, 15px)', fontWeight: 700, color: '#a54d27' }}>Segunda – Sábado</Text>
-                  <Text style={{ fontSize: 'clamp(13px, 3vw, 15px)', fontWeight: 700, color: '#a54d27' }}>8h – 20h</Text>
+              <div style={{ flex: '1 1 50%', padding: '14px 20px 16px', display: 'flex', flexDirection: 'column', alignItems: 'center', overflow: 'hidden' }}>
+                <div style={{ ...titleStyle, marginBottom: 8 }}>Horário</div>
+                <div style={{ width: '100%' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid rgba(33, 58, 54, 0.12)' }}>
+                    <Text style={{ fontSize: 'clamp(11px, 2.6vw, 13px)', fontWeight: 700, color: '#a54d27' }}>Segunda – Sábado</Text>
+                    <Text style={{ fontSize: 'clamp(11px, 2.6vw, 13px)', fontWeight: 700, color: '#a54d27' }}>8h – 20h</Text>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0' }}>
+                    <Text style={{ fontSize: 'clamp(11px, 2.6vw, 13px)', color: '#999' }}>Domingo</Text>
+                    <Text style={{ fontSize: 'clamp(11px, 2.6vw, 13px)', color: '#999' }}>Fechado</Text>
+                  </div>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #eee' }}>
-                  <Text style={{ fontSize: 'clamp(13px, 3vw, 15px)', color: '#999' }}>Domingo</Text>
-                  <Text style={{ fontSize: 'clamp(13px, 3vw, 15px)', color: '#999' }}>Fechado</Text>
-                </div>
-                <Text style={{ fontSize: 'clamp(11px, 2.5vw, 13px)', fontStyle: 'italic', color: '#213a36', display: 'block', marginTop: 12, marginBottom: 16 }}>
-                  Para eventos sofisticados, horários especiais podem ser combinados sob medida
-                </Text>
                 <div
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
+                    justifyContent: 'center',
                     gap: 8,
-                    background: '#213a36',
+                    background: open ? '#c97338' : '#8a8a8a',
                     color: '#fff',
-                    fontWeight: 600,
-                    padding: '8px 20px',
+                    fontWeight: 700,
+                    letterSpacing: 0.5,
+                    padding: '10px 24px',
                     borderRadius: 999,
                     fontSize: 'clamp(12px, 3vw, 14px)',
+                    marginTop: 'auto',
                   }}
                 >
-                  ✓ Aberto agora
+                  {open ? '✓ Aberto agora' : '✕ Fechado agora'}
                 </div>
               </div>
             </Card>

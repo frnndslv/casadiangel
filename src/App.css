@@ -58,6 +58,21 @@ html {
   animation: fadeInUp 0.6s ease-out;
 }
 
+.fade-in-up {
+  animation: fadeInUp 0.7s ease-out both;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Reviews carousel - center slide focus effect */
 .reviews-carousel .slick-track {
   display: flex;
@@ -84,5 +99,15 @@ html {
 @media (max-width: 768px) {
   .ant-menu-horizontal {
     display: none;
+  }
+
+  .header-inner {
+    justify-content: center;
+  }
+
+  .header-logo {
+    height: auto !important;
+    max-height: clamp(90px, 20vw, 110px);
+    max-width: 100%;
   }
 }
