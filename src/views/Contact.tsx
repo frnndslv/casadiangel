@@ -12,15 +12,16 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`
 const PHONE_DISPLAY = '(41) 99152-0742'
 const PHONE_CALL_URL = `tel:+${WHATSAPP_NUMBER}`
 
-const CARD_HEIGHT = 320
+const CARD_HEIGHT = 360
 const GREEN = '#213a36'
 
 function isOpenNow() {
   const now = new Date()
-  const day = now.getDay() // 0 = domingo
+  const day = now.getDay() // 0 = domingo, 6 = sábado
   if (day === 0) return false
   const minutes = now.getHours() * 60 + now.getMinutes()
-  return minutes >= 8 * 60 && minutes < 20 * 60
+  const opensAt = day === 6 ? 9 * 60 : 10 * 60
+  return minutes >= opensAt && minutes < 19 * 60
 }
 
 const cardStyle: React.CSSProperties = {
@@ -131,8 +132,12 @@ export default function Contact() {
                 <div style={{ ...titleStyle, marginBottom: 8 }}>Horário</div>
                 <div style={{ width: '100%' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid rgba(33, 58, 54, 0.12)' }}>
-                    <Text style={{ fontSize: 'clamp(11px, 2.6vw, 13px)', fontWeight: 700, color: '#a54d27' }}>Segunda – Sábado</Text>
-                    <Text style={{ fontSize: 'clamp(11px, 2.6vw, 13px)', fontWeight: 700, color: '#a54d27' }}>8h – 20h</Text>
+                    <Text style={{ fontSize: 'clamp(11px, 2.6vw, 13px)', fontWeight: 700, color: '#a54d27' }}>Segunda – Sexta</Text>
+                    <Text style={{ fontSize: 'clamp(11px, 2.6vw, 13px)', fontWeight: 700, color: '#a54d27' }}>10h – 19h</Text>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid rgba(33, 58, 54, 0.12)' }}>
+                    <Text style={{ fontSize: 'clamp(11px, 2.6vw, 13px)', fontWeight: 700, color: '#a54d27' }}>Sábado</Text>
+                    <Text style={{ fontSize: 'clamp(11px, 2.6vw, 13px)', fontWeight: 700, color: '#a54d27' }}>9h – 19h</Text>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0' }}>
                     <Text style={{ fontSize: 'clamp(11px, 2.6vw, 13px)', color: '#999' }}>Domingo</Text>

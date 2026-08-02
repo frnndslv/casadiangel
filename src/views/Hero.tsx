@@ -16,7 +16,6 @@ export default function Hero({ onReserveClick, onServicesClick }: HeroProps) {
       padding: '80px 20px 60px',
       textAlign: 'center',
       color: '#fff',
-      marginTop: '55px',
       overflow: 'hidden',
       minHeight: '500px'
     }}>

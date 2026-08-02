@@ -1,6 +1,7 @@
 import { Layout, Menu, Typography } from 'antd'
 import './App.css'
 import logo from './assets/logo/logo-verde.svg'
+import AnnouncementBanner from './views/AnnouncementBanner'
 import Hero from './views/Hero'
 import Services from './views/Services'
 import MenuSection from './views/Menu'
@@ -56,7 +57,8 @@ function App() {
       </Header>
 
       <Content style={{ marginTop: 64 }}>
-        <Hero 
+        <AnnouncementBanner />
+        <Hero
           onReserveClick={() => scrollToSection('events')}
           onServicesClick={() => scrollToSection('services')}
         />
